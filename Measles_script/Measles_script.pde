@@ -4,17 +4,18 @@ float faceX, faceY, faceDiameter;
  //
   void setup() {
   //fullscreen;
-  size(600, 400);
+  size(800, 600);
   appWidth = width; //display width
   appHight = height; //display height
   //Ternary Operator
   int smallerDimension = (appWidth >= appHight) ? appHight : appWidth;
-  prinln("Smaller Dimension is", smallerDimension);
+  println("Smaller Dimension is", smallerDimension);
   // 
   //population
   faceX = appWidth*1/2;
   faceY = appHight*1/2;
-  faceDiameter = ;
+  faceDiameter = smallerDimension;
+  //
 } //End setup
 //
   void draw() {
