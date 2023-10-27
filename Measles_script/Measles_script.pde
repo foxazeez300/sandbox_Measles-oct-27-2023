@@ -15,10 +15,17 @@ float faceX, faceY, faceDiameter;
   faceX = appWidth*1/2;
   faceY = appHight*1/2;
   faceDiameter = smallerDimension;
+  backgroundX = ;
+  backgroundY = ; 
+  backgroundWidth = ;
+  backgroundHeight = ; 
+  //
+  //DIVs
   //
 } //End setup
 //
-  void draw() {
+void draw() {
+  rect(backgroundX, backgroundY, backgroundWidth, backgroundHeight); //Circle ONLY
   ellipse( faceX, faceY, faceDiameter, faceDiameter );
 } //End draw
 //
