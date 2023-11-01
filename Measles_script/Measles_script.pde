@@ -48,6 +48,7 @@ void setup() {
   //
   //
   //DIVs
+  rect( backgroundX, backgroundY, backgroundWidth, backgroundHeight );
   ellipse( faceX, faceY, faceDiameter, faceDiameter );
   //4 Inscribed buttons on the background square not on the circle
   //Solve Isolceles leg length to find rect() width and height
@@ -59,7 +60,7 @@ void setup() {
 //
 void draw() {
   //rect( backgroundX, backgroundY, backgroundWidth, backgroundHeight ); //Circle ONLY
-  ellipse( faceX, faceY, faceDiameter, faceDiameter );
+  //ellipse ( faceX, faceY, faceDiameter, faceDiameter );
   ellipse ( leftEyeX, leftEyeY, eyeDimater, eyeDimater ); //Left Eye
   ellipse ( rightEyeX, rightEyeY, eyeDimater, eyeDimater ); //Right Eye
   triangle( noseX1, noseY1, noseX2, noseY2, noseX3, noseY3 ); //Nose
