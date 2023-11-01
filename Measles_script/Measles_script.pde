@@ -65,15 +65,16 @@ void draw() {
   triangle( noseX1, noseY1, noseX2, noseY2, noseX3, noseY3 ); //Nose
   strokeWeight(mouthOpen); 
   line( mouthX1, mouthY1, mouthX2, mouthY2 ); //mouth
+  strokeWeight(mouthReset); //1=reset
    //
    color measleColour = color( 255, random(0, 103), random(0, 103) );
   fill(measleColour);
-  measleX = random( 0, appWidth);
-  measleY = random( 0, appHeight);
+  measleX = random( backgroundX , backgroundX+backgroundWidth);
+  measleY = random( backgroundY , backgroundY+backgroundHeight);
   measleDiameter = random( smallerDimension*1/50, smallerDimension*1/30);
   noStroke();
   ellipse( measleX, measleY, measleDiameter, measleDiameter );
-  stroke(1); //default is 1
+  stroke(10); //default is 1 
   fill(resetColour=#FFFFFF);
  //
 } //End draw
