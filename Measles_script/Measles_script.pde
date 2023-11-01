@@ -40,7 +40,7 @@ void setup() {
   mouthY1 = backgroundY+smallerDimension*3/4;
   mouthX2 = noseX3;
   mouthY2 = mouthY1;
-  mouthOpen = smallerDimension*1/100;
+  mouthOpen = smallerDimension*1/10;
   mouthReset = smallerDimension/smallerDimension; //1=reset
   measleX = random( 0, appWidth);
   measleY = random( 0, appHeight);
