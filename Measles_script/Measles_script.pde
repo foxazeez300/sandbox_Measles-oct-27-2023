@@ -7,7 +7,9 @@ float noseX1, noseY1, noseX2, noseY2, noseX3, noseY3;
 float mouthX1, mouthY1, mouthX2, mouthY2, mouthOpen, mouthReset;
 float measleX, measleY, measleDiameter;
 float button1X, button1Y, button2X, button2Y, button3X, button3Y, buttonSide;
-color resetColour=#FFFFFF;
+color resetColour = #FFFFFF, purple = #2C08FF, yellow = #E9FF00, blackInc = #000000;
+String start="Start", stop="STOP", quit="X";
+PFont buttonFont;
 //
 void setup() {
   //fullscreen:
@@ -44,9 +46,11 @@ void setup() {
   mouthY2 = mouthY1;
   mouthOpen = smallerDimension*1/10;
   mouthReset = smallerDimension/smallerDimension; //1=reset
+  //buttonFont = createFont("Harrington", 55);
   measleX = random( 0, appWidth);
   measleY = random( 0, appHeight);
   measleDiameter = random( smallerDimension*1/50, smallerDimension*1/30);
+  buttonFont = createFont("Harrington", 55);
   //
   //
   //DIVs
@@ -71,8 +75,32 @@ void setup() {
 } //End setup
 //
 void draw() {
-  //rect( backgroundX, backgroundY, backgroundWidth, backgroundHeight ); //Circle ONLY
-  //ellipse ( faceX, faceY, faceDiameter, faceDiameter );
+  //Text Code
+  color hoverOverColour = resetColour;
+  if( mouseX>button1X && mouseX<button1X+buttonSide && mouseY>button1Y && mouseY<button1Y+buttonSide ) { //Button 1
+   hoverOverColour = yellow;
+  } else if( mouseX>button2X && mouseX<button2X+buttonSide && mouseY>button2Y && mouseY<button2Y+buttonSide ) { //Button 2
+   hoverOverColour = yellow;
+  } else if( mouseX>button3X && mouseX<button3X+buttonSide && mouseY>button3Y && mouseY<button3Y+buttonSide ) { //Button 3
+   hoverOverColour = purple;
+  } else{ //No Buttons
+    fill( resetColour);
+  }
+  
+  rect( button1X, button1Y, buttonSide, buttonSide );
+  rect( button2X, button2Y, buttonSide, buttonSide );
+  rect( button3X, button3Y, buttonSide, buttonSide );
+  fill( resetColour);
+  //
+  fill(blackInc); 
+  textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
+  int size = 23;
+  textFont(buttonFont, size);
+  text( start, button1X, button1Y, buttonSide, buttonSide);
+  text( stop, button2X, button2Y, buttonSide, buttonSide);
+  text( quit, button3X, button3Y, buttonSide, buttonSide );
+  //
   ellipse ( leftEyeX, leftEyeY, eyeDimater, eyeDimater ); //Left Eye
   ellipse ( rightEyeX, rightEyeY, eyeDimater, eyeDimater ); //Right Eye
   triangle( noseX1, noseY1, noseX2, noseY2, noseX3, noseY3 ); //Nose
@@ -111,10 +139,9 @@ void draw() {
  //
 } //End draw
 //
-void keyPressed() {
-} //End keyPressed
+//void keyPressed() {} // End keyPressed
 //
-void mousePressed() {
+//void mousePressed() {
 } //End mousePressed
 //
 //End MAIN Program
