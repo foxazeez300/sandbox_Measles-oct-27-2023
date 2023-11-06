@@ -89,6 +89,10 @@ void draw() {
   if ( measleX <= button1X+buttonSide+(measleDiameter/2) && measleY <= button1Y+buttonSide+(measleDiameter/2)) {
     println("\t\tXhere", measleX, button1X+buttonSide);
     measleX = random( button1X+buttonSide+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
+    //
+    if ( measleX <= button2X+buttonSide+(measleDiameter/2) && measleY <= button2Y+buttonSide+(measleDiameter/2)) {
+    println("\t\tXhere", measleX, button1X+buttonSide);
+    measleX = random( button2X+buttonSide+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
   }
   /*
   if ( measleY < button1Y+buttonSide+(measleDiameter/2) ) {
