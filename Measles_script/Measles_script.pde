@@ -6,7 +6,7 @@ float leftEyeX, leftEyeY, rightEyeX, rightEyeY, eyeDimater;
 float noseX1, noseY1, noseX2, noseY2, noseX3, noseY3;
 float mouthX1, mouthY1, mouthX2, mouthY2, mouthOpen, mouthReset;
 float measleX, measleY, measleDiameter;
-float button1X, button1Y, buttonSide;
+float button1X, button1Y, button2X, button2Y, button3X, button3Y, buttonSide;
 color resetColour=#FFFFFF;
 //
 void setup() {
@@ -55,12 +55,18 @@ void setup() {
   //4 Inscribed buttons on the background square not on the circle
   //Solve Isolceles leg length to find rect() width and height
   //2x^2 = radius^2
+  buttonSide = smallerDimension/2-sqrt(sq(smallerDimension/2)/2);
   button1X= backgroundX;
   button1Y = backgroundY;
-  buttonSide = smallerDimension/2-sqrt(sq(smallerDimension/2)/2);
+  button2X = backgroundX + faceDiameter - buttonSide;
+  button2Y = button1Y;
+  button3X = button2X;
+  button3Y = backgroundY + faceDiameter - buttonSide;
   //
   rect( button1X, button1Y, buttonSide, buttonSide );
-  println(backgroundX, smallerDimension, smallerDimension/2, sq( smallerDimension/2 ), sq( smallerDimension/2 ) /2, sqrt( sq( smallerDimension/2 ) /2 ), smallerDimension/2-sqrt(sq(smallerDimension/2)/2) );
+  rect( button2X, button2Y, buttonSide, buttonSide );
+  rect( button3X, button3Y, buttonSide, buttonSide );
+  println(button1X, smallerDimension, smallerDimension/2, sq( smallerDimension/2 ), sq( smallerDimension/2 ) /2, sqrt( sq( smallerDimension/2 ) /2 ), buttonSide );
   //
 } //End setup
 //
@@ -76,16 +82,28 @@ void draw() {
    //
    color measleColour = color( 255, random(0, 84), random(0, 103) );
   fill(measleColour);
-  measleDiameter = random( smallerDimension*1/100, smallerDimension*1/30);
-  measleX = random( (backgroundX) + (measleDiameter/2) , (backgroundX+backgroundWidth) - (measleDiameter/2) );
-   while (measleX < button1X+buttonSide ) measleX = random( (backgroundX) + (measleDiameter/2) , (backgroundX+backgroundWidth) - (measleDiameter/2) );
-  measleY = random( (backgroundY) + (measleDiameter/2) , (backgroundY+backgroundHeight) - (measleDiameter/2) );
-   while (measleY < button1Y+buttonSide ) measleY = random( (backgroundY) + (measleDiameter/2) , (backgroundY+backgroundHeight) - (measleDiameter/2) );
-  
+  measleDiameter = random( smallerDimension*1/100, smallerDimension*1/30 );
+  measleX = random( backgroundX+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
+  measleY = random( backgroundY+(measleDiameter/2), (backgroundY+backgroundHeight)-(measleDiameter/2) );
+  println( "Start", measleX, measleY, measleDiameter );
+  if ( measleX <= button1X+buttonSide+(measleDiameter/2) && measleY <= button1Y+buttonSide+(measleDiameter/2)) {
+    println("\t\tXhere", measleX, button1X+buttonSide);
+    measleX = random( button1X+buttonSide+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
+  }
+  /*
+  if ( measleY < button1Y+buttonSide+(measleDiameter/2) ) {
+    println("\t\tYhere", measleY, button1Y+buttonSide);
+    measleY = random( button1Y+buttonSide+(measleDiameter/2), (backgroundY+backgroundHeight)-(measleDiameter/2) );
+  }
+  */
+  //+buttonSide
+  //+buttonSide
+  //if () {}
   noStroke();
+  println( "End", measleX, measleY, measleDiameter );
   ellipse( measleX, measleY, measleDiameter, measleDiameter );
-  stroke(1); //default is 1 
-  fill(resetColour=#FFFFFF);
+  stroke(1); //default is 1
+  fill(resetColour);
  //
 } //End draw
 //
