@@ -7,14 +7,13 @@ float noseX1, noseY1, noseX2, noseY2, noseX3, noseY3;
 float mouthX1, mouthY1, mouthX2, mouthY2, mouthOpen, mouthReset;
 float measleX, measleY, measleDiameter;
 float button1X, button1Y, button2X, button2Y, button3X, button3Y, buttonSide;
-color resetColour = #FFFFFF, purple = #2C08FF, yellow = #E9FF00, blackInk=#000000;
+color purple=#2C08FF, yellow = #E9FF00, blackInk=#000000, resetColour=#FFFFFF;
 color hoverOverColour=resetColour;
 String start="Start", stop="STOP", quit="X";
 PFont buttonFont;
 Boolean measlesON=false;
 //
 void setup() {
-  //fullscreen:
   size( 600, 400);
   appWidth = width; //displayWidth
   appHeight = height; //displayHeight
@@ -48,9 +47,6 @@ void setup() {
   mouthY2 = mouthY1;
   mouthOpen = smallerDimension*1/10;
   mouthReset = smallerDimension/smallerDimension; //1=reset
-  measleX = random( 0, appWidth);
-  measleY = random( 0, appHeight);
-  measleDiameter = random( smallerDimension*1/50, smallerDimension*1/30);
   buttonFont = createFont("Harrington", 55);
   //
   //
@@ -61,7 +57,7 @@ void setup() {
   //Solve Isolceles leg length to find rect() width and height
   //2x^2 = radius^2
   buttonSide = smallerDimension/2-sqrt(sq(smallerDimension/2)/2);
-  button1X= backgroundX;
+  button1X = backgroundX;
   button1Y = backgroundY;
   button2X = backgroundX + faceDiameter - buttonSide;
   button2Y = button1Y;
@@ -78,6 +74,8 @@ void setup() {
 void draw() {
   //Text Code
 
+  //ERROR Coded, hoverover allows measles into other buttons
+  //Only START has is fixed
   println(button1X, mouseX, button1X+buttonSide, hoverOverColour);
   if ( mouseX>button1X && mouseX<button1X+buttonSide && mouseY>button1Y && mouseY<button1Y+buttonSide ) { //Buton 1
     println("here");
@@ -123,33 +121,30 @@ void draw() {
   measleX = random( backgroundX+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
   measleY = random( backgroundY+(measleDiameter/2), (backgroundY+backgroundHeight)-(measleDiameter/2) );
   println( "Start", measleX, measleY, measleDiameter );
-  if ( measleX <= button1X+buttonSide+(measleDiameter/2) && measleY <= button1Y+buttonSide+(measleDiameter/2)) 
+  if ( measleX <= button1X+buttonSide+(measleDiameter/2) && measleY <= button1Y+buttonSide+(measleDiameter/2)) {
     println("\t\tXhere", measleX, button1X+buttonSide);
     measleX = random( button1X+buttonSide+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
-    //
-    if ( measleX <= button2X+buttonSide+(measleDiameter/2) && measleY <= button2Y+buttonSide+(measleDiameter/2)) {
-      println("\t\tXhere", measleX, button1X+buttonSide);
-      measleX = random( button2X+buttonSide+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
-    }
-    noStroke();
-    if(measlesON==true) ellipse( measleX, measleY, measleDiameter, measleDiameter );
-    stroke(1); //default is 1
-    fill(resetColour);
-    //
-  } //End draw
+  }
+  noStroke();
+  if (measlesON==true) ellipse( measleX, measleY, measleDiameter, measleDiameter );
+  //ERROR: need to redraw program start for measles to disappear
+  stroke(1); //default is 1
+  fill(resetColour);
   //
-  void keyPressed()
-  {
-    if ( key==' ' ) measlesON=true ;//START, SPACE-Bar
-    if ( keyCode==BACKSPACE ) measlesON=false; //STOP
-    if ( keyCode==ESC) exit(); //QUIT
-  } // End keyPressed
-  //
-  void mousePressed()
-  {
+} //End draw
+//
+void keyPressed()
+{
+  if ( key==' ' ) measlesON=true ;//START, SPACE-Bar
+  if ( keyCode==BACKSPACE ) measlesON=false; //STOP
+  if ( keyCode==ESC) exit(); //QUIT
+} // End keyPressed
+//
+void mousePressed()
+{
   if ( mouseX>button1X && mouseX<button1X+buttonSide && mouseY>button1Y && mouseY<button1Y+buttonSide ) measlesON=true; //START
   if ( mouseX>button2X && mouseX<button2X+buttonSide && mouseY>button2Y && mouseY<button2Y+buttonSide ) measlesON=false; //STOP
   if ( mouseX>button3X && mouseX<button3X+buttonSide && mouseY>button3Y && mouseY<button3Y+buttonSide ) exit(); //QUIT
- } //End mousePressed
- //
-  //End MAIN Program
+} //End mousePressed
+//
+//End MAIN Program
