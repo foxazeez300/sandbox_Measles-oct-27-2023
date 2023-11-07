@@ -11,6 +11,7 @@ color resetColour = #FFFFFF, purple = #2C08FF, yellow = #E9FF00, blackInk=#00000
 color hoverOverColour=resetColour;
 String start="Start", stop="STOP", quit="X";
 PFont buttonFont;
+Boolean measlesON=false;
 //
 void setup() {
   //fullscreen:
@@ -131,7 +132,7 @@ void draw() {
       measleX = random( button2X+buttonSide+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
     }
     noStroke();
-    ellipse( measleX, measleY, measleDiameter, measleDiameter );
+    if(measlesON==true) ellipse( measleX, measleY, measleDiameter, measleDiameter );
     stroke(1); //default is 1
     fill(resetColour);
     //
@@ -141,16 +142,14 @@ void draw() {
   {
     if ( key==' ' ) measlesON=true ;//START, SPACE-Bar
     if ( keyCode==BACKSPACE ) measlesON=false; //STOP
-    if ( keyCode==ESC) println("quit"); //QUIT
+    if ( keyCode==ESC) exit(); //QUIT
   } // End keyPressed
   //
   void mousePressed()
   {
-   /*
-  if(mouseX> mouseX< mouseY> mouseY< ) measlesON=true; //START
-     if() println("stop"); //STOP
-     if() println("quit"); //QUIT
-     */
+  if ( mouseX>button1X && mouseX<button1X+buttonSide && mouseY>button1Y && mouseY<button1Y+buttonSide ) measlesON=true; //START
+  if ( mouseX>button2X && mouseX<button2X+buttonSide && mouseY>button2Y && mouseY<button2Y+buttonSide ) measlesON=false; //STOP
+  if ( mouseX>button3X && mouseX<button3X+buttonSide && mouseY>button3Y && mouseY<button3Y+buttonSide ) exit(); //QUIT
  } //End mousePressed
  //
   //End MAIN Program
