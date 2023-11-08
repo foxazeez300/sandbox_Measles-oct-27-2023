@@ -125,9 +125,12 @@ void draw() {
     println("\t\tXhere", measleX, button1X+buttonSide);
     measleX = random( button1X+buttonSide+(measleDiameter/2), (backgroundX+backgroundWidth)-(measleDiameter/2) );
   }
+    //WHILE only works for BUTTON1, must be repeated for other buttons
   noStroke();
-  if (measlesON==true) ellipse( measleX, measleY, measleDiameter, measleDiameter );
+  if( ( (measleX-faceX)*(measleX-faceX) )+( (measleY-faceY)*(measleY-faceY) ) < ( (faceDiameter/2)*(faceDiameter/2) ) ) { //measle on circle
+    if (measlesON==true) ellipse( measleX, measleY, measleDiameter, measleDiameter );
   //ERROR: need to redraw program start for measles to disappear
+  } //end measle on circle
   stroke(1); //default is 1
   fill(resetColour);
   //
