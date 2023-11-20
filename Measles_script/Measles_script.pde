@@ -83,10 +83,23 @@ void keyPressed()
 } // End keyPressed
 //
 void mousePressed() {
-  splashScreen=true;
+  /*splashScreen=true;
   if ( mouseX>button1X && mouseX<button1X+buttonSide && mouseY>button1Y && mouseY<button1Y+buttonSide ) measlesON=true; //START
   if ( mouseX>button2X && mouseX<button2X+buttonSide && mouseY>button2Y && mouseY<button2Y+buttonSide ) measlesON=false; //STOP
   if ( mouseX>button3X && mouseX<button3X+buttonSide && mouseY>button3Y && mouseY<button3Y+buttonSide ) exit(); //QUIT
+  */
+  splashScreen = true;
+
+  if (mouseX > button1X && mouseX < button1X + buttonSide && mouseY > button1Y && mouseY < button1Y + buttonSide) {
+    measlesON = true; // START
+  } else if (mouseX > button2X && mouseX < button2X + buttonSide && mouseY > button2Y && mouseY < button2Y + buttonSide) {
+    measlesON = false; // STOP
+
+    // Reset the measles by redrawing the face
+    redraw();
+  } else if (mouseX > button3X && mouseX < button3X + buttonSide && mouseY > button3Y && mouseY < button3Y + buttonSide) {
+    exit(); // QUIT
+  }
 } //End mousePressed
 //
 //End MAIN Program
