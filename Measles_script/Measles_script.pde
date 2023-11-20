@@ -47,7 +47,7 @@ void setup() {
   mouthY2 = mouthY1;
   mouthOpen = smallerDimension*1/10;
   mouthReset = smallerDimension/smallerDimension; //1=reset
-  buttonFont = createFont("Harrington", 55);
+  buttonFont = createFont("ArialMT", 55);
   //
   //
   //DIVs
