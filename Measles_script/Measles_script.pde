@@ -90,7 +90,6 @@ void mousePressed() {
   } else if (mouseX > button2X && mouseX < button2X + buttonSide && mouseY > button2Y && mouseY < button2Y + buttonSide) {
     measlesON = false; // STOP
 
-    // Reset the measles and redraw the face
     resetMeasles();
     redrawFace();
   } else if (mouseX > button3X && mouseX < button3X + buttonSide && mouseY > button3Y && mouseY < button3Y + buttonSide) {
@@ -99,19 +98,13 @@ void mousePressed() {
 }
 
 void resetMeasles() {
-  // Your code to reset or clear the measles goes here
-  // For example:
   background(0);
 }
 
 void redrawFace() {
-  // Your code to redraw the face goes here
-  // For example:
-  // Draw the background square and ellipse
   rect(backgroundX, backgroundY, backgroundWidth, backgroundHeight);
   ellipse(faceX, faceY, faceDiameter, faceDiameter);
 
-  // Draw the 4 inscribed buttons
   rect(button1X, button1Y, buttonSide, buttonSide);
   rect(button2X, button2Y, buttonSide, buttonSide);
   rect(button3X, button3Y, buttonSide, buttonSide);
