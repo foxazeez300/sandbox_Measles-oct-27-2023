@@ -87,6 +87,8 @@ void mousePressed() {
 
   if (mouseX > button1X && mouseX < button1X + buttonSide && mouseY > button1Y && mouseY < button1Y + buttonSide) {
     measlesON = true; // START
+     resetMeasles();
+    redrawFace();
   } else if (mouseX > button2X && mouseX < button2X + buttonSide && mouseY > button2Y && mouseY < button2Y + buttonSide) {
     measlesON = false; // STOP
 
