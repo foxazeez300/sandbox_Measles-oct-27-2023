@@ -17,6 +17,7 @@ void setup() {
   size( 600, 400);
   appWidth = width; //displayWidth
   appHeight = height; //displayHeight
+  frameRate(120);
   //Ternary Operator
   smallerDimension = (appWidth >= appHeight) ? appHeight : appWidth;
   println("Smaller Dimension is", smallerDimension); //Started as local variable
@@ -88,12 +89,11 @@ void mousePressed() {
   if (mouseX > button1X && mouseX < button1X + buttonSide && mouseY > button1Y && mouseY < button1Y + buttonSide) {
     measlesON = true; // START
      resetMeasles();
-    redrawFace();
+      redrawFace();
   } else if (mouseX > button2X && mouseX < button2X + buttonSide && mouseY > button2Y && mouseY < button2Y + buttonSide) {
     measlesON = false; // STOP
-
-    resetMeasles();
-    redrawFace();
+     resetMeasles();
+      redrawFace();
   } else if (mouseX > button3X && mouseX < button3X + buttonSide && mouseY > button3Y && mouseY < button3Y + buttonSide) {
     exit(); // QUIT
   }
