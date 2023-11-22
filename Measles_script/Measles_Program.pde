@@ -11,11 +11,11 @@ void measlesProgram() {
     rect( button1X, button1Y, buttonSide, buttonSide );
     fill( resetColour );
   } else if ( mouseX>button2X && mouseX<button2X+buttonSide && mouseY>button2Y && mouseY<button2Y+buttonSide ) { //Button 2
-    hoverOverColour = yellow;
+    hoverOverColour = purple;
     fill( hoverOverColour );
     rect( button2X, button2Y, buttonSide, buttonSide );
   } else if ( mouseX>button3X && mouseX<button3X+buttonSide && mouseY>button3Y && mouseY<button3Y+buttonSide ) { //button 3
-    hoverOverColour = purple;
+    hoverOverColour = Red;
     fill( hoverOverColour );
     rect( button3X, button3Y, buttonSide, buttonSide );
   } else { //No Buttons
